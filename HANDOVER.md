@@ -2,9 +2,9 @@
 
 Read this before working on FraudDesk.
 
-## State after 0.1.0 (2026-07-18)
+## State after 0.2.0 (2026-07-18)
 
-Triage queue view is live: replay engine (src/useReplay.ts), queue UI (src/QueueView.tsx), methods panel (src/MethodsModal.tsx), seeded generator (scripts/generate-data.mjs) with committed output (src/data/transactions.json). Deploys to GitHub Pages via .github/workflows/deploy.yml on push to main. Vite base is /frauddesk/.
+Two views behind a content switcher (src/App.tsx), both stay mounted so the replay never resets. Triage queue: replay engine (src/useReplay.ts), queue UI (src/QueueView.tsx). Threshold economics: precomputed per threshold curves and memo builder (src/economics.ts), cockpit with slider, friction assumption, cost curve SVG and printable decision memo (src/CockpitView.tsx). Methods panel (src/MethodsModal.tsx). Seeded generator (scripts/generate-data.mjs) with committed output (src/data/transactions.json). Deploys to GitHub Pages via .github/workflows/deploy.yml on push to main. Vite base is /frauddesk/. Shared formatters live in economics.ts.
 
 ## Session conventions
 
@@ -15,10 +15,10 @@ Triage queue view is live: replay engine (src/useReplay.ts), queue UI (src/Queue
 - No backend, no API keys, no user accounts, no analytics services. GitHub repo traffic stats are the only instrumentation.
 - UI copy: no em dashes, plain language reason codes, estimates labeled as estimates.
 
-## Next milestone (S2): threshold economics + memo
+## Next milestone (S3): scenario injection
 
-- Slider over the review threshold; recompute from the committed dataset client side.
-- Dollar lines: fraud caught, fraud missed (typology weighted), review cost (S$25 to S$50 per alert band, show the band not just the midpoint), friction cost of holding legitimate payments.
-- Analyst headcount implied by alert volume at the chosen threshold.
-- Decision memo panel: one paragraph of prose regenerated from the slider position, print styled.
-- Changelog 0.2.0.
+- Inject typology waves into the replay or the economics view: an official impersonation burst at several times normal volume, a new mule pattern the scorer half misses.
+- Show precision decay when the mix shifts, and the SRF floor still catching its slice.
+- Before and after comparison of the cost curve under the scenario.
+- A governance beat: what deviation triggers retraining and who signs off.
+- Changelog 0.3.0. The trained model with an evaluation page remains the milestone after (backlog item 3 in docs/SPEC.md).

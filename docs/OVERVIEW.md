@@ -8,6 +8,8 @@ FraudDesk is a working simulation of the screen a bank's fraud team stares at al
 
 No real data is involved anywhere. Every transaction comes from a seeded script committed in this repository, so anyone can regenerate the exact same day.
 
+A second view, threshold economics, turns the same day into a decision tool: move one slider and the whole operation reprices, then read the one page decision memo the console writes for the position you chose.
+
 ## The problem it illustrates
 
 Fraud detection sounds like a technology problem. Day to day, it is mostly an operations problem. Industry sources put the false positive rate of transaction monitoring at 90 to 95 percent, meaning nine in ten alerts turn out to be innocent, and each one still costs an estimated S$25 to S$50 of analyst time to check. Tighten the detection threshold and you catch more fraud but bury your team and inconvenience good customers. Loosen it and the queue calms down while losses grow.
@@ -21,11 +23,12 @@ That threshold is therefore a management decision about money, people, and custo
 - **SRF hold tags.** Singapore's Shared Responsibility Framework, in force since 16 June 2025, requires banks to detect rapid account draining: an account holding S$50,000 or more where over half the balance leaves within 24 hours. FraudDesk applies a simplified per transaction version of that rule on top of the score. Rule hits are held for review no matter what the model thinks, which is how real systems layer regulation over models.
 - **The counters.** Open alerts, oldest alert against the SLA, alerts per hour, and estimated review cost per hour. The line below them tracks everything screened, cleared, and resolved by the three-analyst shift.
 - **Speed controls.** Run the day at 1x, 5x, or 20x, pause it, or restart it.
+- **The threshold economics view.** A slider over the review threshold, the total cost curve (missed fraud plus review cost plus customer friction) with its minimum marked, analyst headcount at each position, and a friction assumption you set yourself because no reliable public figure exists. Below it, the decision memo: four paragraphs regenerated from your position, with the recommendation priced and the floors and watch items stated. It prints as a clean one pager.
 
 ## Use cases
 
 1. **A teaching and communication aid.** If you need to explain alert fatigue, false positive economics, or "why can't we just catch all the fraud" to a committee, a class, or a new joiner, this shows it live in two minutes without exposing anyone's real data.
-2. **A sandbox for operational questions.** The simulation makes staffing and policy questions tangible: what happens to the queue when volume outruns three analysts, when does the SLA start breaking, what does an hour of reviewing cost. The planned threshold view extends this into a full what-if tool.
+2. **A sandbox for operational questions.** The simulation makes staffing and policy questions tangible: what happens to the queue when volume outruns three analysts, when does the SLA start breaking, what does an hour of reviewing cost. The threshold view extends this into a what-if tool: drag the slider, watch the cost curve, read the memo.
 3. **A reference pattern.** The repo demonstrates a few patterns worth copying: plain language reason codes on every alert, regulatory rules layered over model scores rather than mixed into them, and a methods panel that separates real numbers from estimates from simulation.
 4. **A demonstration project.** It was built to show operational judgment around fraud tooling, and it is honest about being a simulation. It is not a product and does not pretend to be one.
 
@@ -51,4 +54,4 @@ One simulated day, uniform arrival pattern, a fixed three-analyst shift, a 30 mi
 
 ## Where it goes next
 
-The roadmap in [SPEC.md](SPEC.md): a threshold economics view that prices fraud caught against review cost, customer friction, and analyst headcount as you move the slider, a one page decision memo generated from the chosen position, scenario injection for typology shifts, and a trained model evaluated honestly against this heuristic. Progress lands in [CHANGELOG.md](../CHANGELOG.md).
+The roadmap in [SPEC.md](SPEC.md): scenario injection for typology shifts with the cost curve compared before and after, then a trained model evaluated honestly against this heuristic. Progress lands in [CHANGELOG.md](../CHANGELOG.md).

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0, 2026-07-18
+
+The threshold economics view and the decision memo.
+
+- Slider over the review threshold, with total daily cost framed as missed fraud value plus review cost plus customer friction
+- Friction (cost per held legitimate payment) is an adjustable input, labeled as an assumption in the UI and named in the memo
+- Cost curve against threshold with current position and cost minimum marked; hover to read the curve, click it to move the threshold
+- Analyst headcount for same day clearance, review cost band, false positive share, fraud value caught and missed at any position
+- Decision memo regenerated live from the chosen position: position, recommendation with the trade priced, floors and watch items, basis; print styled so it exports as a one pager
+- Queue and economics views switch without resetting the running replay
+- Methods panel section covering the economics assumptions
+
 ## 0.1.0, 2026-07-18
 
 First public version.

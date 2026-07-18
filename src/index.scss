@@ -269,12 +269,156 @@ body {
   color: var(--cds-link-primary);
 }
 
+.fd-stats .fd-stat:nth-child(4n + 1) {
+  border-left: none;
+  padding-left: 0;
+}
+
+.fd-view-switch {
+  margin: 0 0 1.5rem;
+  max-width: 26rem;
+}
+
+.fd-cockpit-controls {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.fd-slider {
+  flex: 1;
+  min-width: 300px;
+}
+
+.fd-cockpit-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.fd-chart {
+  margin: 2rem 0;
+}
+
+.fd-chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+}
+
+.fd-chart-title {
+  font-size: 0.75rem;
+  color: var(--cds-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.fd-grid {
+  stroke: var(--cds-border-subtle-00);
+  stroke-width: 1;
+}
+
+.fd-axis {
+  stroke: var(--cds-border-subtle-01);
+  stroke-width: 1;
+}
+
+.fd-axis-label,
+.fd-point-label,
+.fd-hover-label {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.fd-axis-label {
+  fill: var(--cds-text-helper);
+  font-size: 10px;
+}
+
+.fd-point-label,
+.fd-hover-label {
+  fill: var(--cds-text-secondary);
+  font-size: 11px;
+}
+
+.fd-ghost {
+  stroke: var(--cds-border-subtle-01);
+  stroke-dasharray: 4 3;
+}
+
+.fd-current-line {
+  stroke: #4589ff;
+  stroke-opacity: 0.35;
+}
+
+.fd-memo {
+  border: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-layer-01);
+  padding: 1.5rem;
+  max-width: 75ch;
+  margin: 1rem 0 2rem;
+}
+
+.fd-memo-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.fd-memo h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.fd-memo p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+  color: var(--cds-text-primary);
+}
+
+@media print {
+  .fd-root * {
+    visibility: hidden;
+  }
+
+  .fd-memo,
+  .fd-memo * {
+    visibility: visible;
+  }
+
+  .fd-memo {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    border: none;
+    max-width: none;
+    padding: 2.5rem;
+  }
+
+  .fd-memo h3,
+  .fd-memo p {
+    color: #000;
+  }
+
+  .fd-memo-head button {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .fd-stats {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .fd-stat:nth-child(3) {
+  .fd-stats .fd-stat:nth-child(4n + 1) {
+    border-left: 1px solid var(--cds-border-subtle-01);
+    padding-left: 1rem;
+  }
+
+  .fd-stats .fd-stat:nth-child(odd) {
     border-left: none;
     padding-left: 0;
   }

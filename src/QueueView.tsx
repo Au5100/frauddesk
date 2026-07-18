@@ -9,11 +9,10 @@ import {
   useReplay,
 } from "./useReplay";
 
+import { num, sgd } from "./economics";
+
 const SPEEDS = [1, 5, 20] as const;
 const MAX_ROWS = 40;
-
-const num = new Intl.NumberFormat("en-SG");
-const sgd = { format: (n: number) => `S$${num.format(Math.round(n))}` };
 
 function ScoreTag({ txn }: { txn: Txn }) {
   const type = txn.score >= 85 ? "red" : txn.score >= 70 ? "magenta" : "gray";

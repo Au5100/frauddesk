@@ -70,12 +70,22 @@ export default function MethodsModal({
           planned milestone.
         </p>
 
+        <h4>The economics view</h4>
+        <p>
+          The threshold view frames the operation as one number: total daily cost, the sum of
+          missed fraud value, review cost, and customer friction. Review cost applies the cited
+          S$25 to S$50 band per alert. Friction, the cost of holding a legitimate customer's
+          payment, has no reliable public figure, so it is an explicit assumption you set yourself
+          and the memo names it. Analyst capacity assumes one analyst clears about 48 alerts across
+          a 6 hour shift. The memo regenerates from the slider position; nothing in it is
+          precomputed prose.
+        </p>
+
         <h4>What comes next</h4>
         <p>
-          The roadmap in the repository covers a threshold economics view that prices the tradeoff
-          between fraud caught, review cost, and customer friction, a decision memo generated from
-          the chosen threshold, and scenario injection for typology shifts. Progress is tracked in
-          CHANGELOG.md.
+          Next milestones: scenario injection for typology shifts, and a trained model with a
+          proper evaluation page, precision recall rather than accuracy, compared honestly against
+          the current heuristic. Progress is tracked in CHANGELOG.md.
         </p>
       </div>
     </Modal>

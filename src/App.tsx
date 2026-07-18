@@ -1,21 +1,22 @@
 import { useState } from "react";
 import {
+  ContentSwitcher,
   Header,
   HeaderGlobalAction,
   HeaderGlobalBar,
   HeaderName,
+  Switch,
   Theme,
 } from "@carbon/react";
 import { Information } from "@carbon/icons-react";
 import QueueView from "./QueueView";
+import CockpitView from "./CockpitView";
 import MethodsModal from "./MethodsModal";
-import rawTxns from "./data/transactions.json";
-import type { Txn } from "./types";
-
-const txns = rawTxns as Txn[];
+import { txns } from "./economics";
 
 export default function App() {
   const [methodsOpen, setMethodsOpen] = useState(false);
+  const [view, setView] = useState(0);
 
   return (
     <Theme theme="g100" className="fd-root">
@@ -36,11 +37,25 @@ export default function App() {
       <main className="fd-shell">
         <div className="fd-container">
           <p className="fd-lede">
-            A simulated fraud triage queue for a retail bank. One day of synthetic transactions
-            replays through a scored queue while three analysts work it. Open the methods panel for
-            what is real, what is estimated, and what is placeholder.
+            A simulated fraud operations desk for a retail bank. One day of synthetic transactions
+            replays through a scored triage queue, and the economics view prices where the
+            threshold sits. Open the methods panel for what is real, what is estimated, and what
+            is placeholder.
           </p>
-          <QueueView txns={txns} />
+          <ContentSwitcher
+            className="fd-view-switch"
+            selectedIndex={view}
+            onChange={({ index }) => typeof index === "number" && setView(index)}
+          >
+            <Switch name="queue" text="Triage queue" />
+            <Switch name="economics" text="Threshold economics" />
+          </ContentSwitcher>
+          <div hidden={view !== 0}>
+            <QueueView txns={txns} />
+          </div>
+          <div hidden={view !== 1}>
+            <CockpitView />
+          </div>
         </div>
       </main>
       <footer className="fd-footer">
