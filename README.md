@@ -5,6 +5,7 @@ An interactive simulation of a bank fraud operations queue.
 Most fraud detection demos stop at the model. Real fraud teams spend their days inside the queue the model creates: alerts arriving faster than analysts clear them, most of them false alarms, each one costing real review time. FraudDesk simulates that queue. One day of synthetic transactions replays through a scored triage stream while a small analyst pool works it, and the counters show what the operation costs as it runs.
 
 **Live demo:** [au5100.github.io/frauddesk](https://au5100.github.io/frauddesk/)
+**Plain language overview, use cases and integration notes:** [docs/OVERVIEW.md](docs/OVERVIEW.md)
 
 ## What it shows
 

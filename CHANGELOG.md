@@ -10,3 +10,4 @@ First public version.
 - Three analyst shift simulation: queue depth, oldest alert SLA, throughput and estimated review cost per hour
 - Methods panel covering data provenance, cited estimates, and known limits
 - Deterministic dataset generator (seeded, committed output, no external data)
+- Plain language overview with use cases and integration notes in docs/OVERVIEW.md
